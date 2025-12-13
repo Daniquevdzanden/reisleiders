@@ -1,14 +1,14 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Paytone_One, Baloo_Da_2 } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const paytone = Paytone_One({
+  variable: "--font-paytone",
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const baloo = Baloo_Da_2({
+  variable: "--font-baloo",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full bg-white">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased h-full`}
+        className={`${paytone.variable} ${baloo.variable} antialiased h-full`}
       >
         {children}
       </body>
