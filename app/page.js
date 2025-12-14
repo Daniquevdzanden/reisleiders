@@ -47,13 +47,14 @@ export default function Home() {
                   name="wachtwoord"
                   type="password"
                   required={true}
+                  disabled={false}
                   autoComplete="current-password"
                 />
               </div>
             </div>
 
             <div>
-              <Button type="submit" text="Inloggen" />
+              <Button type="submit" text="Inloggen" disabled={false} />
             </div>
           </form>
         </div>
