@@ -1,0 +1,29 @@
+import { Paytone_One, Baloo_Da_2 } from "next/font/google";
+import "../globals.css";
+
+const paytone = Paytone_One({
+  variable: "--font-paytone",
+  weight: "400",
+});
+
+const baloo = Baloo_Da_2({
+  variable: "--font-baloo",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+export const metadata = {
+  title: "Inloggen - Reisleiders",
+  description: "Inloggen bij Reisleiders",
+};
+
+export default function AuthLayout({ children }) {
+  return (
+    <html lang="en" className="h-full bg-white">
+      <body
+        className={`${paytone.variable} ${baloo.variable} antialiased h-full`}
+      >
+        {children}
+      </body>
+    </html>
+  );
+}

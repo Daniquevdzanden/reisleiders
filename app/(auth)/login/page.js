@@ -1,8 +1,17 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
-import Image from "next/image";
 
-export default function Home() {
+export default function Inloggen() {
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push("/home");
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -13,7 +22,7 @@ export default function Home() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label
                 htmlFor="gebruikersnaam"
@@ -26,7 +35,8 @@ export default function Home() {
                   id="gebruikersnaam"
                   name="gebruikersnaam"
                   type="text"
-                  required={true}
+                  // Niet required want anders geeft ie een foutmelding bij lege login
+                  required={false}
                   autoComplete="username"
                 />
               </div>
@@ -46,7 +56,8 @@ export default function Home() {
                   id="wachtwoord"
                   name="wachtwoord"
                   type="password"
-                  required={true}
+                  // Niet required want anders geeft ie een foutmelding bij lege login
+                  required={false}
                   disabled={false}
                   autoComplete="current-password"
                 />
