@@ -6,6 +6,7 @@ export default function Input({
   autoComplete,
   whiteBackground,
   disabled,
+  placeholder,
 }) {
   return (
     <input
@@ -15,6 +16,7 @@ export default function Input({
       disabled={disabled}
       required={required}
       autoComplete={autoComplete}
+      placeholder={placeholder}
       className={`block w-full rounded-tl-lg rounded-tr-2xl rounded-bl-2xl rounded-br-3xl px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-[#D1CCE3] placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-[#A99BCC] sm:text-sm/6 disabled:bg-[#C5C4C4] disabled:outline-none  ${
         whiteBackground ? "bg-white" : "bg-[#F4F3F8]"
       } `}

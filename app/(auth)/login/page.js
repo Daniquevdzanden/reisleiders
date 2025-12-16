@@ -34,10 +34,12 @@ export default function Inloggen() {
                 <Input
                   id="gebruikersnaam"
                   name="gebruikersnaam"
+                  placeholder="gebruikersnaam@atalenta.nl"
                   type="text"
                   // Niet required want anders geeft ie een foutmelding bij lege login
                   required={false}
                   autoComplete="username"
+                  className="sm:text-sm placeholder:text-gray-400"
                 />
               </div>
             </div>
@@ -55,6 +57,7 @@ export default function Inloggen() {
                 <Input
                   id="wachtwoord"
                   name="wachtwoord"
+                  placeholder="wachtwoord"
                   type="password"
                   // Niet required want anders geeft ie een foutmelding bij lege login
                   required={false}

@@ -218,7 +218,7 @@ export default function Sidenav({ children }) {
       </div>
 
       <div className="lg:pl-72">
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-xs sm:gap-x-6 sm:px-6 lg:px-8">
+        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 px-4 sm:gap-x-6 sm:px-6 lg:px-8 bg-[#D2CCE3]\62">
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
@@ -240,7 +240,7 @@ export default function Sidenav({ children }) {
                 name="search"
                 placeholder="Zoeken..."
                 aria-label="Search"
-                className="col-start-1 row-start-1 block size-full bg-white pl-8 text-base text-gray-900 outline-hidden placeholder:text-gray-400 sm:text-sm/6"
+                className="col-start-1 row-start-1 block bg-white pl-8 text-base text-gray-900 outline-hidden placeholder:text-gray-400 sm:text-sm/6"
               />
               <MagnifyingGlassIcon
                 aria-hidden="true"
@@ -250,10 +250,13 @@ export default function Sidenav({ children }) {
             <div className="flex items-center gap-x-4 lg:gap-x-6">
               <button
                 type="button"
-                className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500"
+                className="-m-2.5 p-2.5 text-atalenta-paars group"
               >
                 <span className="sr-only">View notifications</span>
-                <BellIcon aria-hidden="true" className="size-6" />
+                <BellIcon
+                  aria-hidden="true"
+                  className="w-6 h-6 stroke-current fill-none group-hover:fill-atalenta-paars transition-colors"
+                />
               </button>
 
               {/* Separator */}
