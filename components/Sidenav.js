@@ -98,15 +98,21 @@ export default function Sidenav({ children }) {
             </TransitionChild>
 
             {/* Sidebar component, swap this element with another sidebar if you like */}
-            <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-atalenta-paars px-6 pb-4">
-              <div className="flex items-center justify-center pt-10">
-                <Image
-                  alt="Atalenta"
-                  src="/logo.svg"
-                  width={32}
-                  height={32}
-                  className="h-auto w-40"
-                />
+            <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-[#663B8F] to-[#9366BE] px-6 pb-4">
+              <div className="flex items-center justify-center pt-10 border-b-1 border-[#663B8F] pb-4">
+                <Link
+                  href="/home"
+                  aria-label="Ga naar home"
+                  onClick={() => setSidebarOpen(false)}
+                >
+                  <Image
+                    alt="Atalenta"
+                    src="/logo.svg"
+                    width={37}
+                    height={37}
+                    className="h-auto w-48 cursor-pointer"
+                  />
+                </Link>
               </div>
               <nav className="flex flex-1 flex-col">
                 <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -116,6 +122,7 @@ export default function Sidenav({ children }) {
                         <li key={item.name}>
                           <Link
                             href={item.href}
+                            onClick={() => setSidebarOpen(false)}
                             className={classNames(
                               isCurrent(item.href)
                                 ? "bg-[#9D75C3] text-white"
@@ -136,11 +143,12 @@ export default function Sidenav({ children }) {
                   <li className="mt-auto">
                     <Link
                       href="/login"
-                      className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-indigo-200 hover:bg-atalenta-paars hover:text-white"
+                      className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-white hover:bg-[#D6B7F5]/30 active:bg-[#9D75C3] border-t border-[#663B8F]/50 pt-4"
                     >
                       <ArrowRightStartOnRectangleIcon
                         aria-hidden="true"
-                        className="size-6 shrink-0 text-indigo-200 group-hover:text-white"
+                        onClick={() => setSidebarOpen(false)}
+                        className="size-6 shrink-0 text-white group-hover:text-white"
                       />
                       Afmelden
                     </Link>
@@ -155,15 +163,17 @@ export default function Sidenav({ children }) {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-atalenta-paars px-6 pb-4">
-          <div className="flex items-center justify-center pt-10">
-            <Image
-              alt="Atalenta"
-              src="/logo.svg"
-              width={32}
-              height={32}
-              className="h-auto w-48"
-            />
+        <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-[#663B8F] to-[#9366BE] px-6 pb-4">
+          <div className="flex items-center justify-center pt-10 border-b-1 border-[#663B8F] pb-4">
+            <Link href="/home" aria-label="Ga naar home">
+              <Image
+                alt="Atalenta"
+                src="/logo.svg"
+                width={37}
+                height={37}
+                className="h-auto w-48 cursor-pointer"
+              />
+            </Link>
           </div>
           <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -193,11 +203,11 @@ export default function Sidenav({ children }) {
               <li className="mt-auto">
                 <Link
                   href="/login"
-                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-indigo-200 hover:bg-atalenta-paars hover:text-white"
+                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold text-white hover:bg-[#D6B7F5]/30 active:bg-[#9D75C3] border-t border-[#663B8F]/50 pt-4"
                 >
                   <ArrowLeftStartOnRectangleIcon
                     aria-hidden="true"
-                    className="size-6 shrink-0 text-indigo-200 group-hover:text-white"
+                    className="size-6 shrink-0 text-white group-hover:text-white"
                   />
                   Afmelden
                 </Link>
