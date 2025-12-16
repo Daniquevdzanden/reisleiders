@@ -99,13 +99,13 @@ export default function Sidenav({ children }) {
 
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-atalenta-paars px-6 pb-4">
-              <div className="flex h-16 shrink-0 items-center">
+              <div className="flex items-center justify-center pt-10">
                 <Image
-                  alt="Your Company"
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white"
+                  alt="Atalenta"
+                  src="/logo.svg"
                   width={32}
                   height={32}
-                  className="h-8 w-auto"
+                  className="h-auto w-40"
                 />
               </div>
               <nav className="flex flex-1 flex-col">
@@ -114,26 +114,21 @@ export default function Sidenav({ children }) {
                     <ul role="list" className="-mx-2 space-y-1">
                       {navigation.map((item) => (
                         <li key={item.name}>
-                          <a
+                          <Link
                             href={item.href}
                             className={classNames(
                               isCurrent(item.href)
-                                ? "bg-atalenta-paars text-white"
-                                : "text-indigo-200 hover:bg-atalenta-paars hover:text-white",
+                                ? "bg-[#9D75C3] text-white"
+                                : "text-white hover:bg-[#9D75C3]/30",
                               "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                             )}
                           >
                             <item.icon
                               aria-hidden="true"
-                              className={classNames(
-                                isCurrent(item.href)
-                                  ? "text-white"
-                                  : "text-indigo-200 group-hover:text-white",
-                                "size-6 shrink-0"
-                              )}
+                              className="size-6 shrink-0 text-white"
                             />
                             {item.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -161,13 +156,13 @@ export default function Sidenav({ children }) {
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-atalenta-paars px-6 pb-4">
-          <div className="flex h-16 shrink-0 items-center">
+          <div className="flex items-center justify-center pt-10">
             <Image
-              alt="Your Company"
-              src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=white"
+              alt="Atalenta"
+              src="/logo.svg"
               width={32}
               height={32}
-              className="h-8 w-auto"
+              className="h-auto w-48"
             />
           </div>
           <nav className="flex flex-1 flex-col">
@@ -176,26 +171,21 @@ export default function Sidenav({ children }) {
                 <ul role="list" className="-mx-2 space-y-1">
                   {navigation.map((item) => (
                     <li key={item.name}>
-                      <a
+                      <Link
                         href={item.href}
                         className={classNames(
                           isCurrent(item.href)
-                            ? "bg-atalenta-paars text-white"
-                            : "text-indigo-200 hover:bg-atalenta-paars hover:text-white",
+                            ? "bg-[#9D75C3] text-white"
+                            : "text-white hover:bg-[#9D75C3]/30",
                           "group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold"
                         )}
                       >
                         <item.icon
                           aria-hidden="true"
-                          className={classNames(
-                            isCurrent(item.href)
-                              ? "text-white"
-                              : "text-indigo-200 group-hover:text-white",
-                            "size-6 shrink-0"
-                          )}
+                          className="size-6 shrink-0 text-white"
                         />
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
