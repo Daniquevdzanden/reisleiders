@@ -99,7 +99,7 @@ export default function Sidenav({ children }) {
 
             {/* Sidebar component, swap this element with another sidebar if you like */}
             <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-gradient-to-b from-[#663B8F] to-[#9366BE] px-6 pb-4">
-              <div className="flex items-center justify-center pt-10 border-b-1 border-[#663B8F] pb-4">
+              <div className="flex items-center justify-center pt-10 border-b border-[#663B8F] pb-4">
                 <Link
                   href="/home"
                   aria-label="Ga naar home"
@@ -217,8 +217,8 @@ export default function Sidenav({ children }) {
         </div>
       </div>
 
-      <div className="lg:pl-72">
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 px-4 sm:gap-x-6 sm:px-6 lg:px-8 bg-[#D2CCE3]\62">
+      <div className="lg:pl-72 h-screen flex flex-col">
+        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 px-4 sm:gap-x-6 sm:px-6 lg:px-8 bg-[#E3DFEE]">
           <button
             type="button"
             onClick={() => setSidebarOpen(true)}
@@ -310,8 +310,8 @@ export default function Sidenav({ children }) {
           </div>
         </div>
 
-        <main className="py-10">
-          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+        <main className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 lg:p-8">
+          {children}
         </main>
       </div>
     </>
