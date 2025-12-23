@@ -1,4 +1,4 @@
-import { Paytone_One, Baloo_Da_2 } from "next/font/google";
+import { Paytone_One, Baloo_Da_2, Caveat } from "next/font/google";
 import "../globals.css";
 
 const paytone = Paytone_One({
@@ -11,6 +11,11 @@ const baloo = Baloo_Da_2({
   weight: ["400", "500", "600", "700", "800"],
 });
 
+const caveat = Caveat({
+  variable: "--font-caveat",
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata = {
   title: "Inloggen - Reisleiders",
   description: "Inloggen bij Reisleiders",
@@ -20,7 +25,7 @@ export default function AuthLayout({ children }) {
   return (
     <html lang="en" className="h-full bg-white">
       <body
-        className={`${paytone.variable} ${baloo.variable} antialiased h-full`}
+        className={`${paytone.variable} ${baloo.variable} ${caveat.variable} antialiased h-full`}
       >
         {children}
       </body>

@@ -3,6 +3,7 @@
 @theme inline {
   --font-baloo: var(--font-baloo);
   --font-paytone: var(--font-paytone);
+  --font-caveat: var(--font-caveat);
   --color-atalenta-paars: #663B8F;
   --color-atalenta-donkergrijs: #373737;
 }
