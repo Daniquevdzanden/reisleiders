@@ -1,4 +1,3 @@
-import Tijdlijn from "@/components/Tijdlijn";
 import Link from "next/link";
 
 export default function Ontdekken() {
@@ -29,11 +28,6 @@ export default function Ontdekken() {
         <div className="flex-1 p-4">
           <h2 className="text-2xl font-bold mb-4"></h2>
           <p></p>
-        </div>
-
-        {/* Rechterkant: Tijdlijn */}
-        <div className="w-full lg:w-1/2 p-4">
-          <Tijdlijn />
         </div>
       </div>
     </div>

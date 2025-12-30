@@ -147,7 +147,7 @@ export default function Tijdlijn() {
 
   return (
     <div className="w-full">
-      <h1 className="text-2xl md:text-3xl font-baloo text-atalenta-paars mb-3 font-bold">
+      <h1 className="text-1xl md:text-2xl font-baloo text-atalenta-paars mb-3 font-bold">
         Tijdlijn
       </h1>
 
@@ -157,10 +157,10 @@ export default function Tijdlijn() {
         <div className="flex items-center gap-4 mb-4">
           <Image
             alt=""
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            src="/profielfoto.jpeg"
             width={32}
             height={32}
-            className="size-12 rounded-full bg-gray-50 outline -outline-offset-1 outline-black/5 shrink-0"
+            className="size-12 rounded-full bg-gray-50 outline -outline-offset-1 outline-black/5 shrink-0 object-cover"
           />
           <div className="flex-1">
             <Input type="text" placeholder="Titel..." whiteBackground={false} />
@@ -171,13 +171,13 @@ export default function Tijdlijn() {
         <div className="bg-[#F4F3F8] rounded-tl-lg rounded-tr-2xl rounded-bl-2xl rounded-br-3xl outline-1 -outline-offset-1 outline-[#D1CCE3] focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-[#A99BCC] overflow-hidden">
           {/* Toolbar */}
           <div className="flex items-center gap-1 px-3 py-2">
-            <button className="p-1.5 hover:bg-white/50 rounded font-bold text-gray-600 text-lg">
+            <button className="p-1.5 hover:bg-white/50 rounded font-bold text-gray-600 text-base">
               B
             </button>
-            <button className="p-1.5 hover:bg-white/50 rounded italic text-gray-600 text-lg">
+            <button className="p-1.5 hover:bg-white/50 rounded italic text-gray-600 text-base">
               I
             </button>
-            <button className="p-1.5 hover:bg-white/50 rounded underline text-gray-600 text-lg">
+            <button className="p-1.5 hover:bg-white/50 rounded underline text-gray-600 text-base">
               U
             </button>
             <div className="w-px h-5 bg-[#D1CCE3] mx-1"></div>
@@ -277,23 +277,23 @@ export default function Tijdlijn() {
                     )}
                   </div>
                   <div>
-                    <p className="font-bold text-gray-800 text-lg">
+                    <p className="font-bold text-gray-800 text-sm">
                       {post.author}
                     </p>
-                    <p className="text-sm text-gray-700">{post.time}</p>
+                    <p className="text-xs text-gray-700">{post.time}</p>
                   </div>
                   {post.isNew && (
-                    <span className="bg-atalenta-paars text-white text-2xl font-normal px-5 py-0.5 rounded-xl font-caveat-brush ml-5">
+                    <span className="bg-atalenta-paars text-white text-sm font-normal px-5 py-0.5 rounded-xl font-caveat-brush ml-5">
                       Nieuw!
                     </span>
                   )}
                 </div>
 
                 {/* Post Content */}
-                <h3 className="font-extrabold text-lg text-gray-800 mb-2">
+                <h3 className="font-extrabold text-base text-gray-800 mb-2">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 mb-2">
+                <p className="text-gray-600 text-xs mb-2">
                   {expandedPostIds.includes(post.id)
                     ? post.content
                     : post.content.length > 100
