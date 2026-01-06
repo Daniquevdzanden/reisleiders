@@ -80,7 +80,45 @@ export default function DronesPage() {
           {/* Contentblok documenten */}
           <div className="rounded-2xl p-4 shadow-md bg-white">
             <h2 className="font-bold text-xl mb-2">Documenten</h2>
-            <p>Hier komen de handleidingen, links of extra documenten.</p>
+            <p className="mb-3">
+              Hier komen de handleidingen, links of extra documenten.
+            </p>
+
+            <ul className="space-y-2">
+              <li className="flex items-center justify-between bg-gray-50 rounded-lg p-3">
+                <div className="flex items-center gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-atalenta-paars"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 11c0-3.866 3.582-7 8-7v14c-4.418 0-8-3.134-8-7zM4 6h.01M4 10h.01M4 14h.01M4 18h.01"
+                    />
+                  </svg>
+                  <div>
+                    <p className="font-semibold">Drones handleiding</p>
+                    <p className="text-xs text-gray-500">
+                      HTML placeholder • vervang door PDF in /public indien
+                      gewenst
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <a
+                    href="/drones-handleiding.pdf"
+                    className="text-sm text-white bg-atalenta-paars px-3 py-1.5 rounded-lg hover:opacity-90"
+                  >
+                    Open
+                  </a>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

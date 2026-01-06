@@ -1,9 +1,16 @@
-export default function Button({ type, text, disabled }) {
+export default function Button({
+  type,
+  text,
+  disabled,
+  onClick,
+  className = "",
+}) {
   return (
     <button
       type={type}
+      onClick={onClick}
       disabled={disabled}
-      className="flex gap-2 cursor-pointer items-center rounded-tl-2xl rounded-tr-xl rounded-br-lg rounded-bl-md bg-[#61B55B] px-5 py-1.5 text-base font-semibold text-white shadow-md shadow-[#488843] hover:bg-[#489B42] active:bg-[#368B30] disabled:bg-[#C5C4C4] disabled:cursor-default disabled:shadow-none disabled:border-none"
+      className={`flex gap-2 cursor-pointer items-center rounded-tl-2xl rounded-tr-xl rounded-br-lg rounded-bl-md bg-[#61B55B] px-5 py-1.5 text-base font-semibold text-white shadow-md shadow-[#488843] hover:bg-[#489B42] active:bg-[#368B30] disabled:bg-[#C5C4C4] disabled:cursor-default disabled:shadow-none disabled:border-none ${className}`}
     >
       <div>{text}</div>
       <svg

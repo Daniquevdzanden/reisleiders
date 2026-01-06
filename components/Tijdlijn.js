@@ -93,6 +93,8 @@ export default function Tijdlijn() {
   const [openCommentPostId, setOpenCommentPostId] = useState(null);
   const [commentText, setCommentText] = useState("");
   const [expandedPostIds, setExpandedPostIds] = useState([]);
+  const [newTitle, setNewTitle] = useState("");
+  const [newContent, setNewContent] = useState("");
 
   const handleLikeToggle = (postId) => {
     setPosts(
@@ -145,6 +147,28 @@ export default function Tijdlijn() {
     );
   };
 
+  const handlePostSubmit = () => {
+    if (!newTitle.trim() && !newContent.trim()) return;
+
+    const newPost = {
+      id: Date.now(),
+      author: "Danique van der Zanden",
+      avatar: null,
+      time: "Zojuist",
+      isNew: true,
+      title: newTitle || "(Geen titel)",
+      content: newContent || "",
+      likes: 0,
+      likedByYou: false,
+      comments: 0,
+      commentsList: [],
+    };
+
+    setPosts((prev) => [newPost, ...prev]);
+    setNewTitle("");
+    setNewContent("");
+  };
+
   return (
     <div className="w-full">
       <h1 className="text-1xl md:text-2xl font-baloo text-atalenta-paars mb-3 font-bold">
@@ -163,7 +187,13 @@ export default function Tijdlijn() {
             className="size-12 rounded-full bg-gray-50 outline -outline-offset-1 outline-black/5 shrink-0 object-cover"
           />
           <div className="flex-1">
-            <Input type="text" placeholder="Titel..." whiteBackground={false} />
+            <Input
+              type="text"
+              placeholder="Titel..."
+              whiteBackground={false}
+              value={newTitle}
+              onChange={(e) => setNewTitle(e.target.value)}
+            />
           </div>
         </div>
 
@@ -233,6 +263,8 @@ export default function Tijdlijn() {
 
           {/* Textarea */}
           <textarea
+            value={newContent}
+            onChange={(e) => setNewContent(e.target.value)}
             placeholder="Deel hier je bericht..."
             className="w-full px-5 py-2 min-h-20 resize-none bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400 text-sm"
           />
@@ -240,7 +272,12 @@ export default function Tijdlijn() {
 
         {/* Post Button */}
         <div className="flex justify-end mt-4">
-          <Button type="submit" text="Plaatsen" disabled={false} />
+          <Button
+            type="button"
+            text="Plaatsen"
+            disabled={!newTitle.trim() && !newContent.trim()}
+            onClick={handlePostSubmit}
+          />
         </div>
 
         <div className="mt-6 ">
