@@ -212,7 +212,7 @@ export default function Materialen() {
       </h1>
 
       {/* FILTER KNOPPEN */}
-      <div className="flex gap-4 flex-wrap mb-2">
+      <div className="flex gap-4 flex-wrap mb-2 relative z-50">
         {filters.map((filter) => (
           <div key={filter.id} className="relative">
             <button
@@ -226,7 +226,7 @@ export default function Materialen() {
             </button>
 
             {openDropdown === filter.id && (
-              <div className="absolute left-0 mt-1 w-40 bg-white rounded-xl shadow-lg z-10">
+              <div className="absolute left-0 mt-1 w-40 bg-white rounded-xl shadow-lg z-50">
                 {filter.options.map((option) => (
                   <label
                     key={option}
