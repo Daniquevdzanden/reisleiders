@@ -1,8 +1,9 @@
-"use client";
+"use client"; // Geeft aan dat dit component in de browser draait
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState } from "react"; // React hook om state bij te houden
+import Link from "next/link"; // Voor interne navigatie tussen pagina's
 
+// Lijst van materialen met info, afbeelding en filters
 const materials = [
   {
     id: 1,
@@ -80,6 +81,7 @@ const materials = [
 ];
 
 export default function Materialen() {
+  // Definities van filters die de gebruiker kan kiezen
   const filters = [
     {
       id: "thema",
@@ -111,15 +113,17 @@ export default function Materialen() {
     },
   ];
 
+  // State voor geselecteerde opties, actieve filters, dropdowns, gefilterde materialen en paginering
   const [selected, setSelected] = useState(
     filters.reduce((acc, f) => ({ ...acc, [f.id]: [] }), {})
   );
-  const [activeFilters, setActiveFilters] = useState([]); // nieuwe state voor actieve labels
-  const [openDropdown, setOpenDropdown] = useState(null);
-  const [filteredMaterials, setFilteredMaterials] = useState(materials);
-  const [page, setPage] = useState(1);
-  const itemsPerPage = 6;
+  const [activeFilters, setActiveFilters] = useState([]); // Labels van actieve filters
+  const [openDropdown, setOpenDropdown] = useState(null); // Welke dropdown open is
+  const [filteredMaterials, setFilteredMaterials] = useState(materials); // Lijst materialen na filter
+  const [page, setPage] = useState(1); // Huidige pagina van de lijst
+  const itemsPerPage = 6; // Aantal materialen per pagina
 
+  // Toggle een filter optie aan/uit
   const toggleOption = (filterId, option) => {
     setSelected((prev) => {
       const current = prev[filterId];
@@ -129,6 +133,7 @@ export default function Materialen() {
     });
   };
 
+  // Wis een filter volledig
   const clearFilter = (filterId) => {
     setSelected((prev) => ({ ...prev, [filterId]: [] }));
     setFilteredMaterials(materials);
@@ -136,11 +141,12 @@ export default function Materialen() {
     setPage(1);
   };
 
+  // Pas geselecteerde opties toe en filter materialen
   const saveFilter = (filterId) => {
     const newFiltered = materials.filter((material) => {
       return Object.keys(selected).every((key) => {
-        if (!selected[key].length) return true;
-        if (!material.filters?.[key]) return false;
+        if (!selected[key].length) return true; // Geen selectie = alles tonen
+        if (!material.filters?.[key]) return false; // Materiaal heeft dit filter niet
         return selected[key].some((option) =>
           material.filters[key].includes(option)
         );
@@ -148,11 +154,9 @@ export default function Materialen() {
     });
     setFilteredMaterials(newFiltered);
     setPage(1);
+    setOpenDropdown(null); // dropdown sluiten
 
-    // dropdown inklappen
-    setOpenDropdown(null);
-
-    // actieve filters bijwerken
+    // Update actieve filters
     const selectedOptions = selected[filterId];
     if (selectedOptions.length) {
       setActiveFilters((prev) => [
@@ -164,17 +168,17 @@ export default function Materialen() {
         },
       ]);
     } else {
-      // als geen opties geselecteerd, verwijderen
       setActiveFilters((prev) => prev.filter((f) => f.filterId !== filterId));
     }
   };
 
+  // Verwijder een actieve filter
   const removeActiveFilter = (filterId, option) => {
     const newSelected = { ...selected };
     newSelected[filterId] = newSelected[filterId].filter((o) => o !== option);
     setSelected(newSelected);
 
-    // update actieve labels
+    // Update actieve labels
     setActiveFilters((prev) =>
       prev
         .map((f) =>
@@ -185,7 +189,7 @@ export default function Materialen() {
         .filter((f) => f.options.length > 0)
     );
 
-    // update materialen
+    // Update gefilterde materialen
     const newFiltered = materials.filter((material) => {
       return Object.keys(newSelected).every((key) => {
         if (!newSelected[key].length) return true;
@@ -199,6 +203,7 @@ export default function Materialen() {
     setPage(1);
   };
 
+  // Materialen die op deze pagina getoond worden
   const paginatedMaterials = filteredMaterials.slice(
     (page - 1) * itemsPerPage,
     page * itemsPerPage
@@ -207,6 +212,7 @@ export default function Materialen() {
 
   return (
     <div className="flex flex-col min-h-screen p-4">
+      {/* Pagina titel */}
       <h1 className="text-3xl font-paytone text-atalenta-paars mb-4">
         Materialen
       </h1>
@@ -215,6 +221,7 @@ export default function Materialen() {
       <div className="flex gap-4 flex-wrap mb-2 relative z-50">
         {filters.map((filter) => (
           <div key={filter.id} className="relative">
+            {/* Dropdown button */}
             <button
               onClick={() =>
                 setOpenDropdown(openDropdown === filter.id ? null : filter.id)
@@ -225,6 +232,7 @@ export default function Materialen() {
               <span className="ml-2">&#9662;</span>
             </button>
 
+            {/* Dropdown opties */}
             {openDropdown === filter.id && (
               <div className="absolute left-0 mt-1 w-40 bg-white rounded-xl shadow-lg z-50">
                 {filter.options.map((option) => (
@@ -241,6 +249,8 @@ export default function Materialen() {
                     {option}
                   </label>
                 ))}
+
+                {/* Knoppen wissen / opslaan */}
                 <div className="flex justify-between px-4 py-2 border-t mt-2">
                   <button
                     onClick={() => clearFilter(filter.id)}
@@ -261,7 +271,7 @@ export default function Materialen() {
         ))}
       </div>
 
-      {/* Actieve filters */}
+      {/* Actieve filters tonen */}
       <div className="flex flex-wrap gap-2 mb-6">
         {activeFilters.map((f) =>
           f.options.map((option) => (
@@ -281,19 +291,21 @@ export default function Materialen() {
         )}
       </div>
 
-      {/* BLOKKEN */}
+      {/* Materialen blokken */}
       <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
         {paginatedMaterials.map((item) => (
           <div
             key={item.id}
             className="relative bg-white rounded-2xl overflow-visible shadow-md"
           >
+            {/* Afbeelding */}
             <img
               src={item.image}
               alt={item.title}
               className="h-40 w-full object-cover rounded-t-2xl"
             />
 
+            {/* Informatie blok */}
             <div className="-mt-12 bg-white rounded-2xl p-4 shadow-md relative z-10">
               <h3 className="font-bold text-atalenta-paars mb-2">
                 {item.title}
@@ -301,6 +313,7 @@ export default function Materialen() {
               <p className="text-sm text-gray-700">{item.text}</p>
             </div>
 
+            {/* Link knop */}
             {item.link && (
               <Link href={item.link}>
                 <button className="absolute z-20 bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-10 h-10 bg-[#61B55B] text-white rounded-full flex items-center justify-center shadow-md font-baloo">
@@ -314,6 +327,7 @@ export default function Materialen() {
 
       {/* PAGINATIE */}
       <div className="flex justify-center items-center gap-4 mt-10">
+        {/* Vorige pagina */}
         <button
           disabled={page === 1}
           onClick={() => setPage(page - 1)}
@@ -322,6 +336,7 @@ export default function Materialen() {
           ‹
         </button>
 
+        {/* Paginanummers */}
         {Array.from({ length: totalPages }).map((_, i) => (
           <button
             key={i}
@@ -334,6 +349,7 @@ export default function Materialen() {
           </button>
         ))}
 
+        {/* Volgende pagina */}
         <button
           disabled={page === totalPages}
           onClick={() => setPage(page + 1)}

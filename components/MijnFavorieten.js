@@ -6,14 +6,14 @@ export default function MijnFavorieten() {
         Mijn favorieten
       </h1>
 
-      {/* Witte container vult nu volledige resterende hoogte */}
+      {/* Witte container die de resterende hoogte vult */}
       <div className="overflow-hidden rounded-3xl bg-white text-black w-full p-8 md:p-10 lg:p-12 flex-1">
-        {/* Flex container voor de twee blokken */}
+        {/* Flex container voor twee blokken naast elkaar */}
         <div className="flex gap-6 h-full">
-          {/* Blok 1 */}
+          {/* Blok 1: placeholder voor content */}
           <div className="flex-1 bg-gray-200 rounded-2xl h-full"></div>
 
-          {/* Blok 2 */}
+          {/* Blok 2: placeholder voor content */}
           <div className="flex-1 bg-gray-200 rounded-2xl h-full"></div>
         </div>
       </div>

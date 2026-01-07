@@ -5,7 +5,16 @@ import Button from "./Button";
 import Input from "./Input";
 import Image from "next/image";
 
+/**
+ * Tijdlijn component
+ * - Lijst van posts
+ * - Nieuwe posts toevoegen
+ * - Likes en reacties beheren
+ * - Uitschuifbare content en commentaarveld
+ */
 export default function Tijdlijn() {
+  // --- STATE MANAGEMENT ---
+  // Posts array
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -90,11 +99,18 @@ export default function Tijdlijn() {
     },
   ]);
 
+  // Open/close state van het commentaar veld
   const [openCommentPostId, setOpenCommentPostId] = useState(null);
   const [commentText, setCommentText] = useState("");
+  // Posts die zijn uitgeklapt (volledige content)
   const [expandedPostIds, setExpandedPostIds] = useState([]);
+  // Inputs voor nieuwe post
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
+
+  // --- FUNCTIES ---
+
+  // Like toggle
 
   const handleLikeToggle = (postId) => {
     setPosts(
@@ -111,10 +127,12 @@ export default function Tijdlijn() {
     );
   };
 
+  // Open of sluit commentaarveld
   const toggleCommentArea = (postId) => {
     setOpenCommentPostId(openCommentPostId === postId ? null : postId);
   };
 
+  // Voeg commentaar toe
   const handleAddComment = (postId) => {
     if (!commentText.trim()) return;
 
@@ -139,6 +157,7 @@ export default function Tijdlijn() {
     setCommentText("");
   };
 
+  // Toggle expand voor lange content
   const toggleExpandPost = (postId) => {
     setExpandedPostIds((prev) =>
       prev.includes(postId)
@@ -147,6 +166,7 @@ export default function Tijdlijn() {
     );
   };
 
+  // Nieuwe post toevoegen
   const handlePostSubmit = () => {
     if (!newTitle.trim() && !newContent.trim()) return;
 
@@ -169,6 +189,7 @@ export default function Tijdlijn() {
     setNewContent("");
   };
 
+  // --- RENDER ---
   return (
     <div className="w-full">
       <h1 className="text-1xl md:text-2xl font-baloo text-atalenta-paars mb-3 font-bold">
@@ -279,7 +300,7 @@ export default function Tijdlijn() {
             onClick={handlePostSubmit}
           />
         </div>
-
+        {/* --- POSTS LIST --- */}
         <div className="mt-6 ">
           <div className="overflow-y-auto max-h-125 space-y-4 pr-2 scrollbar-thin scrollbar-thumb-[#D1CCE3] scrollbar-track-transparent">
             {posts.map((post) => (

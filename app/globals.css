@@ -1,15 +1,20 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* Importeer Tailwind CSS basis */
 
+/* Thema variabelen voor fonts en kleuren */
 @theme inline {
+  /* Fonts die via Next.js Google Fonts zijn ingesteld */
   --font-baloo: var(--font-baloo);
   --font-paytone: var(--font-paytone);
   --font-caveat: var(--font-caveat);
   --font-caveat-brush: var(--font-caveat-brush);
+
+  /* Kleuren die overal in de app gebruikt kunnen worden */
   --color-atalenta-paars: #663B8F;
   --color-atalenta-donkergrijs: #373737;
 }
 
+/* Globale body styling */
 body {
-  background: #D1CCE39E;
-  font-family: var(--font-baloo);
+  background: #D1CCE39E; /* Achtergrondkleur van de pagina */
+  font-family: var(--font-baloo); /* Standaard font voor tekst */
 }
