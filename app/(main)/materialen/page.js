@@ -293,6 +293,11 @@ export default function Materialen() {
 
       {/* Materialen blokken */}
       <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+        {paginatedMaterials.length === 0 && (
+          <p className="col-span-full text-center text-gray-500">
+            Geen resultaten gevonden.
+          </p>
+        )}
         {paginatedMaterials.map((item) => (
           <div
             key={item.id}

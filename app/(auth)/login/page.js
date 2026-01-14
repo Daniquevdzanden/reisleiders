@@ -42,7 +42,7 @@ export default function Inloggen() {
                   name="gebruikersnaam"
                   placeholder="gebruikersnaam@atalenta.nl" // Voorbeeld placeholder
                   type="text" // Tekstveld
-                  required={false} // Niet verplicht om te vullen
+                  // Niet verplicht om te vullen
                   autoComplete="username" // Browser kan gebruikersnaam onthouden
                   className="sm:text-sm placeholder:text-gray-400"
                 />
@@ -64,7 +64,7 @@ export default function Inloggen() {
                   name="wachtwoord"
                   placeholder="wachtwoord" // Placeholder tekst
                   type="password" // Vult het veld met sterretjes i.p.v. echte tekst
-                  required={false} // Niet verplicht om te vullen
+                  // Niet verplicht om te vullen
                   disabled={false} // Het veld is actief
                   autoComplete="current-password" // Browser kan wachtwoord onthouden
                 />

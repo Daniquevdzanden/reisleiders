@@ -1,12 +1,14 @@
 import Tijdlijn from "@/components/Tijdlijn"; // Import van de Tijdlijn component
 import Link from "next/link"; // Import voor interne navigatie
 
-export default function Ontdekken() {
+export default function Communicatie() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Pagina titel */}
       <div className="mx-4 mt-4 mb-4">
-        <h1 className="text-3xl font-paytone text-atalenta-paars">Ontdek…</h1>
+        <h1 className="text-3xl font-paytone text-atalenta-paars">
+          Communicatie
+        </h1>
       </div>
 
       {/* Paarse mini header-balk met knoppen voor subpagina's */}

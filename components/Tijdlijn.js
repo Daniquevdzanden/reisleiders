@@ -13,8 +13,9 @@ import Image from "next/image";
  * - Uitschuifbare content en commentaarveld
  */
 export default function Tijdlijn() {
-  // --- STATE MANAGEMENT ---
-  // Posts array
+  // ==================================================
+  // STATE: POSTS DATA
+  // ==================================================
   const [posts, setPosts] = useState([
     {
       id: 1,
@@ -99,18 +100,28 @@ export default function Tijdlijn() {
     },
   ]);
 
+  // ==================================================
+  // STATE: UI / INTERACTIE
+  // ==================================================
+
   // Open/close state van het commentaar veld
   const [openCommentPostId, setOpenCommentPostId] = useState(null);
-  const [commentText, setCommentText] = useState("");
-  // Posts die zijn uitgeklapt (volledige content)
   const [expandedPostIds, setExpandedPostIds] = useState([]);
-  // Inputs voor nieuwe post
+  // ==================================================
+  // STATE: INPUTS
+  // ==================================================
   const [newTitle, setNewTitle] = useState("");
   const [newContent, setNewContent] = useState("");
+  const [commentText, setCommentText] = useState("");
+  // Posts die zijn uitgeklapt (volledige content)
 
   // --- FUNCTIES ---
 
   // Like toggle
+
+  // ==================================================
+  // HANDLERS: POSTS
+  // ==================================================
 
   const handleLikeToggle = (postId) => {
     setPosts(
@@ -126,7 +137,9 @@ export default function Tijdlijn() {
       })
     );
   };
-
+  // ==================================================
+  // HANDLERS: COMMENTS
+  // ==================================================
   // Open of sluit commentaarveld
   const toggleCommentArea = (postId) => {
     setOpenCommentPostId(openCommentPostId === postId ? null : postId);
@@ -165,7 +178,9 @@ export default function Tijdlijn() {
         : [...prev, postId]
     );
   };
-
+  // ==================================================
+  // HANDLERS: NIEUWE POST
+  // ==================================================
   // Nieuwe post toevoegen
   const handlePostSubmit = () => {
     if (!newTitle.trim() && !newContent.trim()) return;
@@ -189,13 +204,18 @@ export default function Tijdlijn() {
     setNewContent("");
   };
 
+  // ==================================================
+  // RENDER
+  // ==================================================
   // --- RENDER ---
   return (
     <div className="w-full">
       <h1 className="text-1xl md:text-2xl font-baloo text-atalenta-paars mb-3 font-bold">
         Tijdlijn
       </h1>
-
+      {/* ==================================================
+          POST AANMAKEN
+      ================================================== */}
       {/* Post Creation Area */}
       <div className="mb-6 overflow-hidden rounded-3xl bg-white p-8 md:p-10">
         {/* Title Input Row */}
@@ -290,7 +310,9 @@ export default function Tijdlijn() {
             className="w-full px-5 py-2 min-h-20 resize-none bg-transparent focus:outline-none text-gray-900 placeholder:text-gray-400 text-sm"
           />
         </div>
-
+        {/* ==================================================
+            POSTS LIJST
+        ================================================== */}
         {/* Post Button */}
         <div className="flex justify-end mt-4">
           <Button
@@ -303,6 +325,12 @@ export default function Tijdlijn() {
         {/* --- POSTS LIST --- */}
         <div className="mt-6 ">
           <div className="overflow-y-auto max-h-125 space-y-4 pr-2 scrollbar-thin scrollbar-thumb-[#D1CCE3] scrollbar-track-transparent">
+            {/* 👇 FALLBACK bij geen posts */}
+            {posts.length === 0 && (
+              <p className="text-center text-gray-400 py-6">
+                Nog geen berichten geplaatst.
+              </p>
+            )}
             {posts.map((post) => (
               <div
                 key={post.id}

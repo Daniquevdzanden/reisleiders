@@ -37,7 +37,11 @@ const navigation = [
   { name: "Home", href: "/home", icon: HomeIcon },
   { name: "Projectfasen", href: "/projectfasen", icon: MapPinIcon },
   { name: "Materialen", href: "/materialen", icon: InboxArrowDownIcon },
-  { name: "Ontdek...", href: "/ontdek", icon: ChatBubbleBottomCenterTextIcon },
+  {
+    name: "Communicatie",
+    href: "/ontdek",
+    icon: ChatBubbleBottomCenterTextIcon,
+  },
   { name: "Over...", href: "/over", icon: PencilIcon },
 ];
 
